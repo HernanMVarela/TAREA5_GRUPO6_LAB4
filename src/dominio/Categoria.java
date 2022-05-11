@@ -1,6 +1,6 @@
 package dominio;
 
-public class Categorias {
+public class Categoria {
 	
 	private int ID;
 	private String Nombre;
@@ -25,12 +25,12 @@ public class Categorias {
 	
 	//Constructor
 
-	public Categorias() {
+	public Categoria() {
 		ID = 0;
 		Nombre = "NoName";
 	}
 	
-	public Categorias(int ID, String Nombre) {
+	public Categoria(int ID, String Nombre) {
 		this.ID = ID;
 		this.Nombre = Nombre;
 	}
