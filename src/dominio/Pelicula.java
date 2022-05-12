@@ -59,8 +59,8 @@ public class Pelicula implements Comparable<Pelicula> {
 	
 	//CompareTo
 	@Override
-	public int compareTo(Pelicula arg0) {
-		return 0;
+	public int compareTo(Pelicula p) {
+		return this.getNombre().compareTo(p.getNombre());
 	}
 
 }
