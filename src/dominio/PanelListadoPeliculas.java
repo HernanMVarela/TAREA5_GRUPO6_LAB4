@@ -18,8 +18,8 @@ public class PanelListadoPeliculas extends JPanel {
 	 */
 	private static final long serialVersionUID = 1L;
 	private JScrollPane scrollPane;
-	private JList<Peliculas> jList;
-	private DefaultListModel<Peliculas> listModel;
+	private JList<Pelicula> jList;
+	private DefaultListModel<Pelicula> listModel;
 	
 	/**
 	 * Create the panel.
@@ -32,7 +32,7 @@ public class PanelListadoPeliculas extends JPanel {
 		lblPeliculas.setBounds(10, 11, 70, 33);
 		add(lblPeliculas);
 		
-		jList = new JList<Peliculas>();
+		jList = new JList<Pelicula>();
 		jList.setFont(new Font("Tahoma", Font.PLAIN, 22));
 		jList.setBounds(29, 55, 390, 223);
 		
@@ -44,7 +44,7 @@ public class PanelListadoPeliculas extends JPanel {
 	//Se le asignan valores determinados a una instancia DefaultListModel RECIEN creada,,, ListModel1 seria la instancia recien creada y ListModel2 a agregar 
 	//Se repiten dos veces el método setDefaultListModel() porque el ListModel del PanelAgregarPeliculas.java se tiene que ordenar creando otro
 	//ListModel aqui en PanelListadoPeliculas.java
-	public void setDefaultListModel(DefaultListModel<Peliculas> listModel2)
+	public void setDefaultListModel(DefaultListModel<Pelicula> listModel2)
 	{
 		
 		int n= listModel2.getSize();   // n = tamaño del DefaultListModel recibido
@@ -57,7 +57,7 @@ public class PanelListadoPeliculas extends JPanel {
 		Arrays.sort(data);  //Se ordena el Array de strings
 		
 	//luego se tiene que convertir en otro listmodel ya que un Array no puede ir en el jList
-	DefaultListModel<Peliculas> orderlist = new DefaultListModel<Peliculas>();  // Nueva instancia de DefaultListModel llamada "orderlist"
+	DefaultListModel<Pelicula> orderlist = new DefaultListModel<Pelicula>();  // Nueva instancia de DefaultListModel llamada "orderlist"
 	orderlist.clear(); //limpio orderlist
 	
 	for(int i=0;i<n;i++) {
@@ -70,7 +70,7 @@ public class PanelListadoPeliculas extends JPanel {
 		
 	}
 	
-	public Peliculas PeliculaOrdenada(int a, DefaultListModel<Peliculas> b, String v[]) {
+	public Pelicula PeliculaOrdenada(int a, DefaultListModel<Pelicula> b, String v[]) {
 	int n = b.getSize();    //n = tamaño del DefaultListModel recibido b
 	  for(int i=0;i<n;i++) {
 		  if(v[a].equals(b.getElementAt(i).getNombre())) {   //Si ArrayString[en subindice del método anterior] = nombre del  DefaultListModel recibido

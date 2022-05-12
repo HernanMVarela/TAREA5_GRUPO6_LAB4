@@ -3,11 +3,13 @@ package principal;
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
+import javax.swing.DefaultListModel;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import dominio.PanelListadoPeliculas;
+import dominio.Pelicula;
 
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
@@ -15,17 +17,17 @@ import javax.swing.JMenuItem;
 import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
 import java.awt.event.ActionListener;
+import java.util.Iterator;
+import java.util.TreeSet;
 import java.awt.event.ActionEvent;
 
 public class VentanaPrincipal extends JFrame {
-
+	
+	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JMenuBar menuBar;
+	private static DefaultListModel<Pelicula> listModel;
 	
-
-	/**
-	 * Create the frame.
-	 */
 	public VentanaPrincipal() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
@@ -64,6 +66,7 @@ public class VentanaPrincipal extends JFrame {
 				
 //				contentPane.removeAll();
 //				PanelListadoPeliculas listado = new PanelListadoPeliculas();
+//				ordenar_lista();
 //				listado.setDefaultListModel(listModel);
 //				contentPane.add(listado);
 //				contentPane.repaint();
@@ -72,5 +75,18 @@ public class VentanaPrincipal extends JFrame {
 			}
 		});
 		mnPeliculas.add(mntmListar);
+	}
+	
+	private void ordenar_lista() {
+		TreeSet<Pelicula> lista = new TreeSet<Pelicula>();
+		
+		for (int x=0; x<listModel.getSize(); x++) {
+			lista.add(listModel.getElementAt(x));
+		}
+		listModel.clear();
+		Iterator<Pelicula> ite = lista.iterator();
+		while (ite.hasNext()) {
+			listModel.addElement(ite.next());
+		}
 	}
 }
