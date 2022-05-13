@@ -37,7 +37,7 @@ public class Pelicula implements Comparable<Pelicula> {
 		
 		contarID++;
 		this.ID=contarID;
-		genero.setNombre("Terror");
+		genero= new Categoria();
 		Nombre = "";
 	}
 	
