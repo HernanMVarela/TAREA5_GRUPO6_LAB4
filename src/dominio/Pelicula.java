@@ -27,7 +27,7 @@ public class Pelicula implements Comparable<Pelicula> {
 		Nombre = nombre;
 	}
 	
-	public int getCont() {
+	public static int getCont() {
 		return contarID;
 	}
 	
@@ -53,7 +53,7 @@ public class Pelicula implements Comparable<Pelicula> {
 	
 	@Override
 	public String toString() {
-		return ID + " " + Nombre + " " + genero;
+		return ID + " - " + Nombre + " - " + genero;
 	}
 
 	

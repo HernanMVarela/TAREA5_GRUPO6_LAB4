@@ -8,6 +8,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import dominio.PanelAgregarPeliculas;
 import dominio.PanelListadoPeliculas;
 import dominio.Pelicula;
 
@@ -25,37 +26,28 @@ public class VentanaPrincipal extends JFrame {
 	
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
-	private JMenuBar menuBar;
 	private static DefaultListModel<Pelicula> listModel;
 	
 	public VentanaPrincipal() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
-		contentPane = new JPanel();
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		setContentPane(contentPane);
-		contentPane.setLayout(null);
+		setBounds(100, 100, 550, 350);
+		listModel = new DefaultListModel<Pelicula>();
 		
-		menuBar = new JMenuBar();
-		menuBar.setToolTipText("");
-		menuBar.setBounds(45, 0, 97, 21);
-		contentPane.add(menuBar);
+		JMenuBar menuBar = new JMenuBar();
+		setJMenuBar(menuBar);
 		
 		JMenu mnPeliculas = new JMenu("Peliculas");
-		mnPeliculas.setBounds(10, 2, 55, 19);
-		contentPane.add(mnPeliculas);
+		menuBar.add(mnPeliculas);
 		
 		JMenuItem mntmAgregar = new JMenuItem("Agregar");
 		mntmAgregar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
-//				contentPane.removeAll();
-//				PanelAgregarPeliculas agregar = new PanelAgregarPeliculas();
-//				agregar.setDefaultListModel(listModel);
-//				contentPane.add(agregar);
-//				contentPane.repaint();
-//				contentPane.revalidate();
-				
+				contentPane.removeAll();
+				PanelAgregarPeliculas agregar = new PanelAgregarPeliculas();
+				agregar.setDefaultListModel(listModel);
+				contentPane.add(agregar);
+				contentPane.repaint();
+				contentPane.revalidate();
 			}
 		});
 		mnPeliculas.add(mntmAgregar);
@@ -63,30 +55,30 @@ public class VentanaPrincipal extends JFrame {
 		JMenuItem mntmListar = new JMenuItem("Listar");
 		mntmListar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
-//				contentPane.removeAll();
-//				PanelListadoPeliculas listado = new PanelListadoPeliculas();
-//				ordenar_lista();
-//				listado.setDefaultListModel(listModel);
-//				contentPane.add(listado);
-//				contentPane.repaint();
-//				contentPane.revalidate();
-				
+				contentPane.removeAll();
+				PanelListadoPeliculas listado = new PanelListadoPeliculas();
+				ordenar_lista();
+				listado.setDefaultListModel(listModel);
+				contentPane.add(listado);
+				contentPane.repaint();
+				contentPane.revalidate();
 			}
 		});
 		mnPeliculas.add(mntmListar);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		contentPane.setLayout(new BorderLayout(0, 0));
+		setContentPane(contentPane);
 	}
 	
 	private void ordenar_lista() {
 		TreeSet<Pelicula> lista = new TreeSet<Pelicula>();
-		
-		for (int x=0; x<listModel.getSize(); x++) {
+		if (listModel.isEmpty()) return;
+		for (int x=0; x<listModel.getSize(); x++)
 			lista.add(listModel.getElementAt(x));
-		}
 		listModel.clear();
 		Iterator<Pelicula> ite = lista.iterator();
-		while (ite.hasNext()) {
+		while (ite.hasNext())
 			listModel.addElement(ite.next());
-		}
 	}
 }
