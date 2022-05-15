@@ -4,7 +4,7 @@ public class Pelicula implements Comparable<Pelicula> {
 	private Categoria genero;
 	private int ID;
 	private static int contarID = 0;
-	private String Nombre;
+	private String nombre;
 	
 	//get&set
 	
@@ -20,11 +20,11 @@ public class Pelicula implements Comparable<Pelicula> {
 	}
 	
 	public String getNombre() {
-		return Nombre;
+		return nombre;
 	}
 	
 	public void setNombre(String nombre) {
-		Nombre = nombre;
+		this.nombre = nombre;
 	}
 	
 	public static int getCont() {
@@ -38,7 +38,7 @@ public class Pelicula implements Comparable<Pelicula> {
 		contarID++;
 		this.ID=contarID;
 		genero= new Categoria();
-		Nombre = "";
+		nombre = "";
 	}
 	
 	public Pelicula(Categoria categoria, String nombre) {
@@ -46,14 +46,14 @@ public class Pelicula implements Comparable<Pelicula> {
 		contarID++;
 		this.ID=contarID;
 		genero = categoria;
-		Nombre = nombre;
+		this.nombre = nombre;
 	}
 	
 	//toString
 	
 	@Override
 	public String toString() {
-		return ID + " - " + Nombre + " - " + genero;
+		return ID + " - " + nombre + " - " + genero;
 	}
 
 	//CompareTo

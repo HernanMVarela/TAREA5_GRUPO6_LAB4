@@ -1,11 +1,7 @@
 package dominio;
 
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-
 import java.awt.Font;
-import java.util.Arrays;
-
 import javax.swing.DefaultListModel;
 import javax.swing.JLabel;
 import javax.swing.JList;

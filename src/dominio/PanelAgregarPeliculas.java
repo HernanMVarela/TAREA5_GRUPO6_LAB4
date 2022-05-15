@@ -3,7 +3,6 @@ package dominio;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -27,6 +26,9 @@ public class PanelAgregarPeliculas extends JPanel {
 	private JLabel lblGenero;
 	private JComboBox<Categoria> comboBoxGenero;
 	private JButton btnAceptar;
+	private String nombre;
+	private String aux;
+	private Pelicula pelicula;
 
 	public PanelAgregarPeliculas() {
 		setLayout(null);
@@ -82,8 +84,8 @@ public class PanelAgregarPeliculas extends JPanel {
 					if(comboBoxGenero.getSelectedIndex()==0) {JOptionPane.showMessageDialog(null, "Seleccione un género"); pass=false;}
 					
 					for(int x=0; x < listModel.getSize(); x++){
-						String nombre = listModel.getElementAt(x).getNombre();
-						String aux = txtFieldNombre.getText();
+						nombre = listModel.getElementAt(x).getNombre();
+						aux = txtFieldNombre.getText();
 						if(nombre.equalsIgnoreCase(aux)) {
 							JOptionPane.showMessageDialog(null, "Esa película ya se encuentra cargada");
 							txtFieldNombre.setText("");
@@ -92,10 +94,10 @@ public class PanelAgregarPeliculas extends JPanel {
 						}
 					}
 					if(pass) {						
-						Pelicula x = new Pelicula();
-						x.setCategoria((Categoria)comboBoxGenero.getSelectedItem());
-						x.setNombre(txtFieldNombre.getText());
-						listModel.addElement(x);
+						pelicula = new Pelicula();
+						pelicula.setCategoria((Categoria)comboBoxGenero.getSelectedItem());
+						pelicula.setNombre(txtFieldNombre.getText());
+						listModel.addElement(pelicula);
 						txtFieldNombre.setText("");
 						comboBoxGenero.setSelectedIndex(0);
 						idPelicula.setText(Integer.toString(Pelicula.getCont()+1));
