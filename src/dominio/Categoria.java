@@ -3,7 +3,7 @@ package dominio;
 public class Categoria {
 	
 	private int ID;
-	private String Nombre;
+	private String nombre;
 	
 	//Get&Set
 	
@@ -16,30 +16,30 @@ public class Categoria {
 	}
 	
 	public String getNombre() {
-		return Nombre;
+		return nombre;
 	}
 	
 	public void setNombre(String nombre) {
-		Nombre = nombre;
+		this.nombre = nombre;
 	}
 	
 	//Constructor
 
 	public Categoria() {
 		ID = 0;
-		Nombre = "NoName";
+		nombre = "NoName";
 	}
 	
-	public Categoria(int ID, String Nombre) {
+	public Categoria(int ID, String nombre) {
 		this.ID = ID;
-		this.Nombre = Nombre;
+		this.nombre = nombre;
 	}
 
 	//toString
 	
 	@Override
 	public String toString() {
-		return Nombre;
+		return nombre;
 	}
 	
 	
