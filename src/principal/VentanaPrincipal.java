@@ -27,19 +27,23 @@ public class VentanaPrincipal extends JFrame {
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private static DefaultListModel<Pelicula> listModel;
+	private JMenuBar menuBar;
+	private JMenu mnPeliculas;
+	private JMenuItem mntmAgregar;
+	private JMenuItem mntmListar; 
 	
 	public VentanaPrincipal() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 550, 350);
 		listModel = new DefaultListModel<Pelicula>();
 		
-		JMenuBar menuBar = new JMenuBar();
+		menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
 		
-		JMenu mnPeliculas = new JMenu("Peliculas");
+		mnPeliculas = new JMenu("Peliculas");
 		menuBar.add(mnPeliculas);
 		
-		JMenuItem mntmAgregar = new JMenuItem("Agregar");
+		mntmAgregar = new JMenuItem("Agregar");
 		mntmAgregar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				contentPane.removeAll();
@@ -52,7 +56,7 @@ public class VentanaPrincipal extends JFrame {
 		});
 		mnPeliculas.add(mntmAgregar);
 		
-		JMenuItem mntmListar = new JMenuItem("Listar");
+		mntmListar = new JMenuItem("Listar");
 		mntmListar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				contentPane.removeAll();
@@ -74,11 +78,15 @@ public class VentanaPrincipal extends JFrame {
 	private void ordenar_lista() {
 		TreeSet<Pelicula> lista = new TreeSet<Pelicula>();
 		if (listModel.isEmpty()) return;
-		for (int x=0; x<listModel.getSize(); x++)
-			lista.add(listModel.getElementAt(x));
-		listModel.clear();
-		Iterator<Pelicula> ite = lista.iterator();
-		while (ite.hasNext())
-			listModel.addElement(ite.next());
+		try {
+			for (int x=0; x<listModel.getSize(); x++)
+				lista.add(listModel.getElementAt(x));
+			listModel.clear();
+			Iterator<Pelicula> ite = lista.iterator();
+			while (ite.hasNext())
+				listModel.addElement(ite.next());
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 }

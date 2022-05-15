@@ -14,6 +14,7 @@ public class PanelListadoPeliculas extends JPanel {
 	
 	private static final long serialVersionUID = 1L;
 //	private JScrollPane scrollPane;
+	private JLabel lblPeliculas;
 	private JList<Pelicula> jList;
 	private DefaultListModel<Pelicula> listModel;
 
@@ -21,7 +22,7 @@ public class PanelListadoPeliculas extends JPanel {
 		setLayout(null);
 		listModel = new DefaultListModel<Pelicula>();
 		
-		JLabel lblPeliculas = new JLabel("Peliculas");
+		lblPeliculas = new JLabel("Peliculas");
 		lblPeliculas.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		lblPeliculas.setBounds(10, 11, 70, 33);
 		add(lblPeliculas);

@@ -56,11 +56,10 @@ public class Pelicula implements Comparable<Pelicula> {
 		return ID + " - " + Nombre + " - " + genero;
 	}
 
-	
 	//CompareTo
 	@Override
 	public int compareTo(Pelicula p) {
 		return this.getNombre().compareTo(p.getNombre());
 	}
-
+	
 }
