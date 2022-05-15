@@ -29,6 +29,7 @@ public class PanelAgregarPeliculas extends JPanel {
 	private String nombre;
 	private String aux;
 	private Pelicula pelicula;
+	private boolean pass;
 
 	public PanelAgregarPeliculas() {
 		setLayout(null);
@@ -77,7 +78,7 @@ public class PanelAgregarPeliculas extends JPanel {
 		btnAceptar.setFont(new Font("Tahoma", Font.BOLD, 15));
 		btnAceptar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				boolean pass=true;
+				pass=true;
 				try {
 					if(txtFieldNombre.getText().isEmpty()) {txtFieldNombre.setBackground(Color.RED);pass=false;}
 					else {txtFieldNombre.setBackground(Color.WHITE);}
