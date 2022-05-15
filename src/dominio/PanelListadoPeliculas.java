@@ -1,6 +1,8 @@
 package dominio;
 
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+
 import java.awt.Font;
 import javax.swing.DefaultListModel;
 import javax.swing.JLabel;
@@ -12,6 +14,7 @@ public class PanelListadoPeliculas extends JPanel {
 	private JLabel lblPeliculas;
 	private JList<Pelicula> jList;
 	private DefaultListModel<Pelicula> listModel;
+	private JScrollPane scrollPane;
 
 	public PanelListadoPeliculas() {
 		setLayout(null);
@@ -23,10 +26,13 @@ public class PanelListadoPeliculas extends JPanel {
 		add(lblPeliculas);
 		
 		jList = new JList<Pelicula>();
-		jList.setFont(new Font("Tahoma", Font.PLAIN, 22));
-		jList.setBounds(29, 55, 390, 223);
+		jList.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		
-		add(jList);
+		scrollPane = new JScrollPane();
+		scrollPane.setBounds(29, 55, 420, 200);
+	    scrollPane.setViewportView(jList);
+	    jList.setLayoutOrientation(JList.VERTICAL);
+		add(scrollPane);
 	}
 	
 	public void setDefaultListModel(DefaultListModel<Pelicula> listModel) {
